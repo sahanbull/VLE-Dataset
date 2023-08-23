@@ -3,6 +3,7 @@ from pyspark.sql import SparkSession
 import pandas as pd
 import numpy as np
 
+from os import makedirs
 from os.path import join
 from sklearn.ensemble import RandomForestRegressor
 import joblib
@@ -134,5 +135,6 @@ if __name__ == '__main__':
     parser.add_argument('--is-log', action='store_true', help="Defines if the label should be log transformed.")
 
     args = vars(parser.parse_args())
+    makedirs(args['output_dir'], exist_ok=True)
 
     main(args)
